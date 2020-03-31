@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { DataServiceService } from "src/app/services/data-service.service";
 
 @Component({
-  selector: 'app-wellcome',
-  templateUrl: './wellcome.component.html',
-  styleUrls: ['./wellcome.component.css']
+  selector: "app-wellcome",
+  template: `
+    <h1>{{ textFromHi }} wellcome works!</h1>
+  `,
+  styleUrls: ["./wellcome.component.css"]
 })
 export class WellcomeComponent implements OnInit {
-
-  constructor() { }
+  textFromHi: string;
+  constructor(private _dataService: DataServiceService) {}
 
   ngOnInit(): void {
+    this.textFromHi = this._dataService.textFromHi;
   }
-
 }
