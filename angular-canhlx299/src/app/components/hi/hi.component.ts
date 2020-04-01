@@ -37,6 +37,7 @@ export class HiComponent
   btnClick() {
     this.text = "Change From Child!";
     this.buttonClicked.emit(this.text);
+    this._dataService.setTextFromHi(this.text);
   }
 
   constructor(private _dataService: DataServiceService) {}

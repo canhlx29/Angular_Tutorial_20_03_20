@@ -1,16 +1,15 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class DataServiceService {
-  private _textFromHi: string;
-  get textFromHi() {
-    return this._textFromHi;
-  }
+  private _textFromHiSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  testFromHii$: Observable<string> = this._textFromHiSubject.asObservable();
 
   setTextFromHi(text: string) {
-    this._textFromHi = text;
+    this._textFromHiSubject.next(text);
   }
 
   constructor() {}

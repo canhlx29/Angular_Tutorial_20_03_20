@@ -8,6 +8,7 @@ import {
   AfterViewChecked,
   AfterContentChecked
 } from "@angular/core";
+import { DataServiceService } from "./services/data-service.service";
 
 @Component({
   selector: "app-root",
@@ -33,10 +34,12 @@ export class AppComponent
   btnClick(): void {
     this.withBorder = !this.withBorder;
     this.title = "Change From Parent!";
+    this._dataService.setTextFromHi(this.title);
   }
   btnClickFromChild(event) {
     this.title = event;
   }
+  constructor(private _dataService: DataServiceService) {}
   ngAfterContentChecked(): void {
     console.log("Parent AfterContentChecked!");
   }

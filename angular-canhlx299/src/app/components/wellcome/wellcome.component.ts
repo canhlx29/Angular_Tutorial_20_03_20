@@ -13,6 +13,6 @@ export class WellcomeComponent implements OnInit {
   constructor(private _dataService: DataServiceService) {}
 
   ngOnInit(): void {
-    this.textFromHi = this._dataService.textFromHi;
+    this._dataService.testFromHii$.subscribe(text => (this.textFromHi = text));
   }
 }
